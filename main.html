@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Global Bullion Syndicate</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800;900&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+:root{ --vh: 100dvh; }
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#060D1F;overflow:hidden}
+body{display:flex;justify-content:center}
+.bg{position:fixed;inset:0;background:radial-gradient(120% 70% at 50% -10%, #10245A 0%, transparent 60%),radial-gradient(80% 60% at 90% 80%, #083A4A 0%, transparent 50%),#060D1F}
+.glow{position:fixed;border-radius:50%;filter:blur(70px);mix-blend-mode:plus-lighter;pointer-events:none}
+.g1{width:360px;height:360px;left:5%;top:5%;background:radial-gradient(circle,#1E90FF 0%,transparent 70%);opacity:0.4}
+.g2{width:300px;height:300px;right:0;top:45%;background:radial-gradient(circle,#00D68F 0%,transparent 70%);opacity:0.28}
+.g3{width:260px;height:260px;left:20%;bottom:5%;background:radial-gradient(circle,#FF4D6A 0%,transparent 70%);opacity:0.18}
+.app{position:relative;z-index:10;width:100%;max-width:420px;height:var(--vh);display:flex;flex-direction:column;padding:2.2vh 20px 16px 20px}
+.brand{display:flex;justify-content:space-between;align-items:center;margin-bottom:2vh}
+.brand-name{font-family:'Geist';font-weight:800;font-size:9px;letter-spacing:0.32em;color:rgba(180,200,255,0.42)}
+.brand-dot{width:6px;height:6px;border-radius:50%;background:#7AFFC8;box-shadow:0 0 12px #7AFFC8}
+.hero{flex-shrink:0}
+.pill{display:inline-flex;padding:6px 12px;border-radius:100px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);font-family:'Geist';font-weight:800;font-size:10px;letter-spacing:0.32em;color:#fff;backdrop-filter:blur(12px)}
+.xau-stage{position:relative;width:100%;padding:10px 0 0 0;overflow:visible}
+.xau-text{font-family:'Syne';font-weight:800;font-size:19.8vw;line-height:0.9;letter-spacing:-0.05em;color:#fff;display:block;white-space:nowrap;transform-origin:left center;text-shadow:0 1px 0 #E6EFFF,0 2px 0 #B8D0FF,0 3px 0 #6EA8FF,0 4px 0 #2F5DB2,0 5px 14px rgba(0,0,0,0.6),0 0 32px rgba(110,198,255,0.45)}
+.into-row{margin-top:12px;display:flex;align-items:center;font-family:'Geist';font-weight:900;font-size:clamp(13px,4.1vw,16.5px);letter-spacing:0.20em;white-space:nowrap}
+.white{color:#fff} .green{color:#7AFFC8}
+.cash-icon{width:22px;height:22px;margin:0 10px;transform:translateY(-1px);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7AFFC8,#6EC6FF);border-radius:6px;box-shadow:0 2px 8px rgba(122,255,200,0.3)}
+.content{margin-top:2.8vh;flex:1;overflow-y:auto;scrollbar-width:none}
+.content::-webkit-scrollbar{display:none}
+.headline{font-family:'Geist';font-weight:800;font-size:15px;line-height:1.35;color:#fff}
+.headline .blue{color:#6EC6FF} .headline .red{color:#FF6B82}
+.body-text{margin-top:16px;font-family:'Geist';font-weight:400;font-size:13px;line-height:1.65;color:rgba(210,225,255,0.72)}
+.body-text b{color:#fff;font-weight:700}
+.signal-box{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-family:'Geist';font-weight:800;font-size:10px;letter-spacing:0.12em;padding:7px 11px;border-radius:100px;border:1px solid}
+.tag.entry{color:#6EC6FF;border-color:rgba(110,198,255,0.35);background:rgba(110,198,255,0.1)}
+.tag.sl{color:#FF6B82;border-color:rgba(255,107,130,0.35);background:rgba(255,107,130,0.1)}
+.tag.tp{color:#7AFFC8;border-color:rgba(122,255,200,0.35);background:rgba(122,255,200,0.1)}
+.check-row{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.check-item{display:flex;align-items:center;gap:10px;font-family:'Geist';font-size:12.5px;font-weight:500;color:rgba(220,230,255,0.78)}
+.check-icon{width:20px;height:20px;flex-shrink:0;border-radius:50%;background:rgba(122,255,200,0.15);border:1px solid rgba(122,255,200,0.3);display:flex;align-items:center;justify-content:center}
+.quote{margin-top:22px;display:flex;align-items:center;gap:10px;padding-left:12px;border-left:2px solid rgba(255,255,255,0.12)}
+.quote-icon{width:22px;height:22px;flex-shrink:0;border-radius:6px;background:linear-gradient(135deg,#6EC6FF,#8AA8FF);display:flex;align-items:center;justify-content:center}
+.quote-text{font-family:'Geist';font-style:italic;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,0.55)}
+.footer{flex-shrink:0;padding-top:18px}
+.btn{width:100%;height:56px;border-radius:100px;border:none;background:#fff;color:#060D1F;font-family:'Geist';font-weight:800;font-size:13px;letter-spacing:2.2px;box-shadow:0 0 0 1px #fff,0 18px 44px rgba(110,198,255,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.hint{margin-top:10px;text-align:center;font-family:'Geist';font-size:9px;letter-spacing:2.6px;color:rgba(160,190,255,0.38)}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+<div class="app" id="app">
+<div class="brand"><div class="brand-name">GLOBAL BULLION SYNDICATE</div><div class="brand-dot"></div></div>
+<div class="hero">
+<div class="pill">WE TURN</div>
+<div class="xau-stage" id="xauStage"><span class="xau-text" id="xauText">XAUUSD</span></div>
+<div class="into-row">
+<span class="white">INTO CASH.</span>
+<div class="cash-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 7 2 7 7C7 7 3 7 3 11C3 15 7 15 7 15C7 20 12 20 12 20C12 20 17 20 17 15C17 15 21 15 21 11C21 11 21 7 17 7C17 2 12 2 12 2Z" fill="#052A4A"/></svg></div>
+<span class="green">FOR FREE.</span>
+</div>
+</div>
+<div class="content">
+<div class="headline">No courses. No VIP. <span class="blue">Just XAUUSD.</span><br>We get paid by the market. <span class="red">We dont need your money.</span></div>
+<div class="body-text"><b>Lets be clear:</b> We will never ever ask for your MT5 login.<br>We post signals. You profit. Its that simple.<br><br>We post free signals every day with Entry, Stop Loss and Take Profits.<br><br>Broke days end now. They doubted you. They laughed.<br><b>Let them watch you win.</b> The losses, the sleepless charts, it all ends today.<br><br>Your money. Your control. No VIP drama.</div>
+<div class="signal-box"><div class="tag entry">ENTRY</div><div class="tag sl">STOP LOSS</div><div class="tag tp">TP1 TP2 TP3</div></div>
+<div class="check-row">
+<div class="check-item"><div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L19 8" stroke="#7AFFC8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Real time updates when targets hit</div>
+<div class="check-item"><div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L19 8" stroke="#7AFFC8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>FREE signals forever. No catch</div>
+</div>
+<div class="quote"><div class="quote-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2L22 9L12 22L2 9L12 2Z" fill="white"/></svg></div><div class="quote-text">Gold moves every day. The banks profit. Why shouldnt you</div></div>
+</div>
+<div class="footer">
+<a class="btn" id="tgBtn" href="tg://resolve?domain=Global_Bullion_Syndicate">JOIN CHANNEL →</a>
+<div class="hint">BUILT BY TRADERS FOR TRADERS • NO BULLSHIT</div>
+</div>
+</div>
+<script>
+function fit(){
+document.documentElement.style.setProperty('--vh',`${window.innerHeight}px`);
+const stage=document.getElementById('xauStage');
+const text=document.getElementById('xauText');
+text.style.transform='scale(1)';
+const sw=stage.clientWidth,tw=text.scrollWidth;
+if(tw>sw){
+const sc=(sw/tw)*0.985;
+text.style.transform=`scale(${sc})`;
+stage.style.height=`${text.offsetHeight*sc+4}px`;
+}
+}
+function openTG(e){
+e.preventDefault();
+var appLink="tg://resolve?domain=Global_Bullion_Syndicate";
+var webLink="https://t.me/Global_Bullion_Syndicate";
+var isAndroid=/Android/i.test(navigator.userAgent);
+var isiOS=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+if(isAndroid||isiOS){
+window.location=appLink;
+setTimeout(function(){ window.location=webLink; },1200);
+}else{
+window.open(webLink,"_blank");
+}
+}
+document.getElementById('tgBtn').addEventListener('click',openTG);
+window.addEventListener('load',fit);
+window.addEventListener('resize',fit);
+document.fonts.ready.then(fit);
+setTimeout(fit,400);
+</script>
+</body>
+  </html>
